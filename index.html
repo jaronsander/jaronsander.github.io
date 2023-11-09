@@ -7,6 +7,46 @@
     </head>
     <body>
         <div id="unified_widget" class="mx-auto w-1/2"></div>
-        <script src="https://api.unified.to/docs/unified.js?wid=6515e0abaab47259c2cf71c3&did=unified_widget&surl=https://eog4wdz1ajqhk69.m.pipedream.net&furl=https://eog4wdz1ajqhk69.m.pipedream.net&uid=4473410000149819222&scopes=crm_contact_read,crm_contact_write,crm_deal_read"></script>
+        <script id="uni"></script>
+        <script>
+            const url = "https://api.unified.to/docs/unified.js?wid=6515e0abaab47259c2cf71c3&did=unified_widget&surl=https://eog4wdz1ajqhk69.m.pipedream.net&furl=https://eog4wdz1ajqhk69.m.pipedream.net&scopes=crm_contact_read,crm_contact_write,crm_deal_read&uid="
+            const queryString = window.location.search;
+
+            // Extract the id parameter if it exists
+            const urlParams = new URLSearchParams(queryString);
+            const id = urlParams.get('id');
+            
+            const uni = document.getElementById("uni");
+            let first_load = true;
+            uni.addEventListener("load", function(){
+                first_load = false;
+                if (id) {
+                // id parameter exists
+                console.log('The id is:', id);
+                var newsrc = url + id; 
+                uni.src = newsrc;
+                } else {
+                // id parameter does not exist
+                console.log('No id parameter found');
+                // id = "6515e0abaab47259c2cf71c3";
+            }
+            })
+            // Set source to url + id
+            if (id) {
+                // id parameter exists
+                console.log('The id is:', id);
+                var newsrc = url + id; 
+                uni.src = newsrc;
+                } else {
+                // id parameter does not exist
+                console.log('No id parameter found');
+                // id = "6515e0abaab47259c2cf71c3";
+            }
+            
+
+            // Add script tag to head 
+            // uni.appendChild(script);
+        </script>
+        
     </body>
 </html>
